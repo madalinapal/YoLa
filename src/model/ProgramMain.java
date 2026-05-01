@@ -39,14 +39,33 @@ public class ProgramMain {
         o2.addProduct(p3, 1);
         o2.addProduct(p2, 2);
         
-        System.out.println("\nDetalii Comandă 1:"); 
+        System.out.println("\nDetalii comandă 1 (înainte de procesare):"); 
         o1.getOrderDetails();
-        System.out.println("\nDetalii Comandă 2:");
+        System.out.println("\nDetalii comandă 2 (înainte de procesare):");
         o2.getOrderDetails();
         System.out.println("...............................................\n");
 
         // admin-ul pregătește comenzile
-        admin.prepareOrder();
+        System.out.println("... Preparing orders ...");
+        
+        // procesare comanda 1
+        boolean ok1_p1 = admin.processOrder(o1, p1, 2); 
+        boolean ok1_p2 = admin.processOrder(o1, p2, 1);
+        
+        if (ok1_p1 && ok1_p2) {
+            o1.setStatus("Ready to ship"); 
+            System.out.println(">> Comanda 1 a trecut verificarea de stoc și este gata!");
+        }
+
+        // procesare comanda 2
+        boolean ok2_p3 = admin.processOrder(o2, p3, 1);
+        boolean ok2_p2 = admin.processOrder(o2, p2, 2);
+        
+        if (ok2_p3 && ok2_p2) {
+            o2.setStatus("Ready to ship");
+            System.out.println(">> Comanda 2 a trecut verificarea de stoc și este gata!");
+        }
+        System.out.println("...............................................\n");
 
         // curierii se loghează
         Courier curier1 = new Courier(4, "curier_vasile", "vasilepopa#787", "vasipopa@fast.ro", "Vasile", "Popa", "0766000111");
@@ -57,21 +76,25 @@ public class ProgramMain {
 
         // procesul de livrare
         System.out.println("\n..... Proces de Livrare .....");
-        curier1.takeOrder(o1, c1);
-        System.out.println("\nDetaliile curierului:");
-        curier1.getCourierDetails();
-        curier1.deliverAndCollectPayment(o1);
-        System.out.println();
-        o1.setStatus("Delivered");
-
-        curier2.takeOrder(o2, c2);
-        System.out.println("\nDetaliile curierului:");
-        curier2.getCourierDetails();
-        curier2.deliverAndCollectPayment(o2);
-        o2.setStatus("Delivered");
-
-        System.out.println("\nStatus final comanda 1: " + o1.getStatus());
-        System.out.println("Status final comanda 2: " + o2.getStatus());
+        if (ok1_p1 && ok1_p2) {
+        	curier1.takeOrder(o1, c1);
+        	System.out.println("\nDetaliile curierului:");
+        	curier1.getCourierDetails();
+        	curier1.deliverAndCollectPayment(o1);
+        	o1.setStatus("Delivered");
+            System.out.println("Status final comanda 1: " + o1.getStatus());
+        }
+        
+        if (ok2_p3 && ok2_p2) {
+        	System.out.println();
+        	curier2.takeOrder(o2, c2);
+        	System.out.println("\nDetaliile curierului:");
+        	curier2.getCourierDetails();
+        	curier2.deliverAndCollectPayment(o2);
+        	o2.setStatus("Delivered");
+            System.out.println("Status final comanda 2: " + o2.getStatus());
+        }
+        
         System.out.println();
         
         // stoc-ul final
