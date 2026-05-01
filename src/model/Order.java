@@ -28,7 +28,7 @@ public class Order {
     }
 
    
-    public String getOrderDetails() {
+    public void getOrderDetails() {
         StringBuilder sb = new StringBuilder();
         sb.append("Comanda ID: ").append(orderID).append(" | Status: ").append(status).append("\n");
         sb.append("Produse:\n");
@@ -37,12 +37,16 @@ public class Order {
               .append(": ").append(entry.getValue()).append(" buc\n");
         }
         sb.append("Total de plată: ").append(calculateTotal());
-        return sb.toString();
+        System.out.println(sb.toString());
     }
 
     
     public int getOrderID() { 
     	return orderID; 
+    }
+    
+    public void setOrderID(int ordID) { 
+    	this.orderID = ordID; 
     }
     
     public String getStatus() { 

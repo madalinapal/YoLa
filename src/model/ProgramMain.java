@@ -6,7 +6,7 @@ public class ProgramMain {
 		// admin-ul se loghează
         Admin admin = new Admin(1, "AdminSiteOWNER", "#yola_owner554", "magazin_bijuteriiYOLA@gmail.ro", "Rux", "Hammond");
         admin.login();
-        
+        admin.getAdminDetails();
         // admin-ul introduce produse pe stoc
         Product p1 = new Product(101, NumeProd.Bratara, 52.0f, 10);
         Product p2 = new Product(102, NumeProd.Lantisor, 125.0f, 5);
@@ -17,7 +17,10 @@ public class ProgramMain {
         admin.addProduct(p3);
         
         System.out.println();
-        System.out.println("Stoc inițial: " + p1.getProductDetails() + "\n" + p2.getProductDetails() + "\n" + p3.getProductDetails());
+        System.out.println("Stoc inițial: ");
+        p1.getProductDetails();
+        p2.getProductDetails(); 
+        p3.getProductDetails();
         System.out.println("...............................................");
 
         // clienții se loghează
@@ -36,9 +39,11 @@ public class ProgramMain {
         o2.addProduct(p3, 1);
         o2.addProduct(p2, 2);
         
-        System.out.println("\nDetalii Comandă 1:\n" + o1.getOrderDetails());
-        System.out.println("\nDetalii Comandă 2:\n" + o2.getOrderDetails());
-        System.out.println("...............................................");
+        System.out.println("\nDetalii Comandă 1:"); 
+        o1.getOrderDetails();
+        System.out.println("\nDetalii Comandă 2:");
+        o2.getOrderDetails();
+        System.out.println("...............................................\n");
 
         // admin-ul pregătește comenzile
         admin.prepareOrder();
@@ -53,13 +58,15 @@ public class ProgramMain {
         // procesul de livrare
         System.out.println("\n..... Proces de Livrare .....");
         curier1.takeOrder(o1, c1);
-        System.out.println("\nDetaliile curierului:\n" + curier1.getCourierDetails());
+        System.out.println("\nDetaliile curierului:");
+        curier1.getCourierDetails();
         curier1.deliverAndCollectPayment(o1);
+        System.out.println();
         o1.setStatus("Delivered");
 
         curier2.takeOrder(o2, c2);
-        System.out.println("\nDetaliile curierului:\n" + curier2.getCourierDetails());
-        System.out.println();
+        System.out.println("\nDetaliile curierului:");
+        curier2.getCourierDetails();
         curier2.deliverAndCollectPayment(o2);
         o2.setStatus("Delivered");
 
@@ -68,7 +75,10 @@ public class ProgramMain {
         System.out.println();
         
         // stoc-ul final
-        System.out.println("Stoc final: " + p1.getProductDetails() + "\n" + p2.getProductDetails() + "\n" + p3.getProductDetails());
+        System.out.println("Stoc final: ");
+        p1.getProductDetails();
+        p2.getProductDetails(); 
+        p3.getProductDetails();
         System.out.println("...............................................");
         
         // delogări
