@@ -21,7 +21,8 @@ public class Product {
 
     public String getProductDetails() {
         return "ID: " + productID + " | Nume: " + nume + 
-        	" | Preț: " + price + " | Stoc: " + stockQuantity;
+        	" | Preț: " + price + " | Stoc: " + stockQuantity + 
+        	" | Valoarea totală din depozit: " + getTotalStockValue();
     }
 
     public float getTotalStockValue() {

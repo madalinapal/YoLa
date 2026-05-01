@@ -18,11 +18,13 @@ public class User {
 	}
 	
 	public void login() {
-        System.out.println("Utilizatorul " + username + " s-a logat.");
+		String tipUtilizator = this.getClass().getSimpleName();
+	    System.out.println(tipUtilizator + "-ul " + username + " s-a logat.");
     }
 
     public void logout() {
-        System.out.println("Utilizatorul " + username + " s-a delogat.");
+    	String tipUtilizator = this.getClass().getSimpleName();
+        System.out.println(tipUtilizator + "-ul " + username + " s-a delogat.");
     }
     
     public String getUsername() {

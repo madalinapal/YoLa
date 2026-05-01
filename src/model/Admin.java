@@ -32,8 +32,8 @@ public class Admin extends User {
     	this.lastName = lastName; 
     }
 
-    public void addProduct() {
-        System.out.println("Product added to stock by admin: " + getUsername());
+    public void addProduct(Product p) {
+        System.out.println("Product " + p.getNume() +  " added to stock by admin: " + getUsername());
     }
 
     public void prepareOrder() {
