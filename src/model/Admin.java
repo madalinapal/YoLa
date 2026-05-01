@@ -48,6 +48,23 @@ public class Admin extends User {
     public void manageUserData() {
         System.out.println("Managing users...");
     }
+    
+    // metoda care implementeaza logica din diagrama de activitati
+    // returneaza true daca stocul este suficient si comanda este pregatita
+    public boolean processOrder(Order order, Product product, int requestedQuantity) {
+       // verific stocul
+       if (product.getStockQuantity() >= requestedQuantity) {
+           // destul stoc
+           order.addProduct(product, requestedQuantity);
+           order.setStatus("Finished"); 
+           return true;
+       } else {
+           // nu e destul stoc
+           order.setStatus("Cancelled - Notify Customer"); 
+           System.out.println("Request supply: product " + product.getNume() + " , quantity " + requestedQuantity);
+           return false;
+       }
+   }
 
   
 }
