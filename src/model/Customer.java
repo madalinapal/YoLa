@@ -24,6 +24,12 @@ public class Customer extends User {
 	this.phoneNumber = phoneNumber;
 	}
     
+    public void getCustomerDetails() {
+    	afisare();
+        System.out.println(" | Prenume: " + firstName + " | Nume: " + lastName +
+        		" | Adresa: " + adress + " | Nr. de telefon:  " + phoneNumber );
+    }
+    
     public void createAccount() {
         System.out.println("Cont creat pentru clientul: " + firstName + " " + lastName);
     }

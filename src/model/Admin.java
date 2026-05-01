@@ -16,6 +16,11 @@ public class Admin extends User {
         this.lastName = lastName;
     }
 
+    public void getAdminDetails() {
+    	afisare();
+        System.out.println(" | Prenume: " + firstName + " | Nume: " + lastName);
+    }
+    
     public String getFirstName() { 
     	return firstName; 
     }

@@ -19,10 +19,10 @@ public class Product {
         this.nume = nume;
     }
 
-    public String getProductDetails() {
-        return "ID: " + productID + " | Nume: " + nume + 
+    public void getProductDetails() {
+        System.out.println("ID: " + productID + " | Nume: " + nume + 
         	" | Preț: " + price + " | Stoc: " + stockQuantity + 
-        	" | Valoarea totală din depozit: " + getTotalStockValue();
+        	" | Valoarea totală din depozit: " + getTotalStockValue());
     }
 
     public float getTotalStockValue() {
@@ -45,6 +45,10 @@ public class Product {
     	return price; 
     }
     
+    public void setPrice(float prc) { 
+    	this.price = prc; 
+    }
+    
     public NumeProd getNume() { 
     	return nume; 
     }
@@ -53,7 +57,15 @@ public class Product {
     	return stockQuantity; 
     }
     
+    public void setStockQuantity(int stock) { 
+    	 this.stockQuantity = stock; 
+    }
+    
     public int getProductID() { 
     	return productID; 
+    }
+    
+    public void setProductID(int pID) { 
+    	this.productID = pID; 
     }
 }

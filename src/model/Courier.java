@@ -25,10 +25,11 @@ public class Courier extends User {
         System.out.println(mesaj);
     }
     
-    public String getCourierDetails() {
-        return "Curier: " + firstName + " " + lastName + 
+    public void getCourierDetails() {
+    	afisare();
+        System.out.println(" | Curier: " + firstName + " " + lastName + 
                " | Telefon: " + phoneNumber + 
-               " | Username din sistem: " + getUsername(); 
+               " | Username din sistem: " + getUsername()); 
     }
 
     public void deliverAndCollectPayment(Order order) {
