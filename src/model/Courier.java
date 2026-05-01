@@ -3,13 +3,13 @@ package model;
 public class Courier extends User {
     private String firstName;
     private String lastName;
-    private int phoneNumber;
+    private String phoneNumber;
 
     public Courier() {
         super();
     }
 
-    public Courier(int ID, String uname, String pass, String mail, String firstName, String lastName, int phoneNumber) {
+    public Courier(int ID, String uname, String pass, String mail, String firstName, String lastName, String phoneNumber) {
         super(ID, uname, pass, mail);
         this.firstName = firstName;
         this.lastName = lastName;
@@ -32,7 +32,7 @@ public class Courier extends User {
     }
 
     public void deliverAndCollectPayment(Order order) {
-        System.out.println("Order" + order.getOrderID() +  "delivered and payment collected by " + lastName);
+        System.out.println("Order " + order.getOrderID() +  " delivered and payment collected by " + lastName);
     }
     
     public String getFirstName() { 
@@ -52,11 +52,11 @@ public class Courier extends User {
     	this.lastName = lastName; 
     }
     
-    public int getPhoneNumber() { 
+    public String getPhoneNumber() { 
     	return phoneNumber; 
     }
     
-    public void setPhoneNumber(int phoneNumber) { 
+    public void setPhoneNumber(String phoneNumber) { 
     	this.phoneNumber = phoneNumber; 
     }
 }

@@ -16,6 +16,7 @@ public class Order {
 
     public void addProduct(Product product, int quantity) {
         products.put(product, quantity);
+        product.modifyStock(-quantity);
     }
 
     public float calculateTotal() {
