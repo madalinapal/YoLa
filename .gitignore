@@ -1,11 +1,3 @@
-<<<<<<< Updated upstream
-=======
-# Configuraii Eclipse IDE 
-	.classpath 
-	.project 
-	.settings/
-	
-# Fisiere compilate Java
-	bin/
->>>>>>> Stashed changes
+# Configuraii Eclipse IDE .classpath .project .settings/ # Fiiere 
+compilate Java bin/
 /bin/
