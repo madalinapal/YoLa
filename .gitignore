@@ -1,3 +1,7 @@
-# Configuraii Eclipse IDE .classpath .project .settings/ # Fiiere 
-compilate Java bin/
+# Configuraii Eclipse IDE 
+.classpath 
+.project 
+.settings/
+ # Fisiere compilate Java 
+bin/
 /bin/
