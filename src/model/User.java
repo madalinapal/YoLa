@@ -17,6 +17,13 @@ public class User {
 		email = mail;
 	}
 	
+	public User(User u) {
+		UserID = u.UserID;
+		username = u.username;
+		password = u.password;
+		email = u.email;
+	}
+	
 	public void login() {
 		
 		String tipUtilizator = this.getClass().getSimpleName();

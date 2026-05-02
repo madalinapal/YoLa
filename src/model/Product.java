@@ -5,6 +5,8 @@ public class Product {
     private NumeProd nume;
     private float price;
     private int stockQuantity;
+    
+    private Admin admin; 
 
     public Product() { }
 
@@ -15,14 +17,22 @@ public class Product {
         this.stockQuantity = stockQuantity;
     }
     
+    public Product(Product p) {
+        this.productID = p.productID;
+        this.nume = p.nume;
+        this.price = p.price;
+        this.stockQuantity = p.stockQuantity;
+        this.admin = p.admin; 
+    }
+    
     public void setNume(NumeProd nume) {
         this.nume = nume;
     }
 
     public void getProductDetails() {
         System.out.println("ID: " + productID + " | Nume: " + nume + 
-        	" | Preț: " + price + " | Stoc: " + stockQuantity + 
-        	" | Valoarea totală din depozit: " + getTotalStockValue());
+            " | Preț: " + price + " | Stoc: " + stockQuantity + 
+            " | Valoarea totală din depozit: " + getTotalStockValue());
     }
 
     public float getTotalStockValue() {
@@ -41,31 +51,40 @@ public class Product {
         this.stockQuantity += quantity;
     }
 
+
     public float getPrice() { 
-    	return price; 
+        return price; 
     }
     
     public void setPrice(float prc) { 
-    	this.price = prc; 
+        this.price = prc; 
     }
     
     public NumeProd getNume() { 
-    	return nume; 
+        return nume; 
     }
     
     public int getStockQuantity() { 
-    	return stockQuantity; 
+        return stockQuantity; 
     }
     
     public void setStockQuantity(int stock) { 
-    	 this.stockQuantity = stock; 
+         this.stockQuantity = stock; 
     }
     
     public int getProductID() { 
-    	return productID; 
+        return productID; 
     }
     
     public void setProductID(int pID) { 
-    	this.productID = pID; 
+        this.productID = pID; 
+    }
+
+    public Admin getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
     }
 }
