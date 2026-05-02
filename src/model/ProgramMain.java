@@ -4,7 +4,7 @@ public class ProgramMain {
 
 	public static void main(String[] args) {
 		// admin-ul se loghează
-        Admin admin = new Admin(1, "AdminSiteOWNER", "#yola_owner554", "magazin_bijuteriiYOLA@gmail.ro", "Rux", "Hammond");
+        Admin admin = new Admin(1, "AdminSiteOWNER", "#yola_owner554", "magazin_bijuteriiYOLA@gmail.ro", "Rux", "Hammond", null);
         admin.login();
         admin.getAdminDetails();
         // admin-ul introduce produse pe stoc
@@ -24,8 +24,8 @@ public class ProgramMain {
         System.out.println("...............................................");
 
         // clienții se loghează
-        Customer c1 = new Customer(2, "MariaTuluca18", "maria#190000", "maria.tuluca@gmail.com", "Maria", "Tuluca", "Calarasi, Str. Florilor, nr.5", "0722111222");
-        Customer c2 = new Customer(3, "MadalinaPalade04", "madaa#05%8", "mada_palade@gmail.com", "Madalina", "Palade", "Pitesti, Bd. Unirii 10", "0733444555");
+        Customer c1 = new Customer(2, "MariaTuluca18", "maria#190000", "maria.tuluca@gmail.com", "Maria", "Tuluca", "Calarasi, Str. Florilor, nr.5", "0722111222", null);
+        Customer c2 = new Customer(3, "MadalinaPalade04", "madaa#05%8", "mada_palade@gmail.com", "Madalina", "Palade", "Pitesti, Bd. Unirii 10", "0733444555", null);
         
         c1.login();
         c2.login();
@@ -68,17 +68,30 @@ public class ProgramMain {
         System.out.println("...............................................\n");
 
         // curierii se loghează
-        Courier curier1 = new Courier(4, "curier_vasile", "vasilepopa#787", "vasipopa@fast.ro", "Vasile", "Popa", "0766000111");
-        Courier curier2 = new Courier(5, "curier_mihai", "mihaiionescu%829928", "mihai_ionescu@fast.ro", "Mihai", "Ionescu", "0766000222");
+        Courier curier1 = new Courier(4, "curier_vasile", "vasilepopa#787", "vasipopa@fast.ro", "Vasile", "Popa", "0766000111", null);
+        Courier curier2 = new Courier(5, "curier_mihai", "mihaiionescu%829928", "mihai_ionescu@fast.ro", "Mihai", "Ionescu", "0766000222", null);
         
         curier1.login();
         curier2.login();
 
         // procesul de livrare
         System.out.println("\n..... Proces de Livrare .....");
+        
+        // Testare setStatus - Scenariu Eșuat (Statusul comenzii nu este "Transporting order")
+        System.out.println("--- Testare setStatus (când comanda NU este în livrare): ---");
+        c1.setStatus("available", o1); 
+        System.out.println();
+        
         if (ok1_p1 && ok1_p2) {
         	curier1.takeOrder(o1, c1);
-        	System.out.println("\nDetaliile curierului:");
+        	
+        	// Setăm statusul comenzii în "Transporting order" pentru a permite setarea statusului clientului
+        	o1.setStatus("Transporting order");
+        	
+            System.out.println("\n--- Testare setStatus (când comanda ESTE în livrare): ---");
+            c1.setStatus("available", o1);
+            
+            System.out.println("\nDetaliile curierului:");
         	curier1.getCourierDetails();
         	curier1.deliverAndCollectPayment(o1);
         	o1.setStatus("Delivered");
@@ -88,6 +101,11 @@ public class ProgramMain {
         if (ok2_p3 && ok2_p2) {
         	System.out.println();
         	curier2.takeOrder(o2, c2);
+        	
+        	// Setăm statusul pentru comanda 2
+        	o2.setStatus("Transporting order");
+        	c2.setStatus("not home", o2);
+        	
         	System.out.println("\nDetaliile curierului:");
         	curier2.getCourierDetails();
         	curier2.deliverAndCollectPayment(o2);
@@ -110,7 +128,5 @@ public class ProgramMain {
         admin.logout();
         c1.logout();
         c2.logout();
-
 	}
-
 }
